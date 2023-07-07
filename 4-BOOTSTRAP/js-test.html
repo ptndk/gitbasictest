@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body class=" bg-secondary">
+    <h1 class=" m-3 d-flex justify-content-center fw-bold ">Cinema Ticket</h1>
+
+    <div class=" ">
+      <input type="text" id="price" placeholder="Ticket Price" />
+      <input type="text" id="quantity" placeholder="Quantity" />
+      <button id="cal">Calculate</button>
+    </div>
+
+    <div class="mt-4 fw-bold"><span>Total Price : </span><span id="total"></span></div>
+
+    <div class="mt-4 d-flex justify-content-center">
+      <button id="clear">Clear</button>
+      <button id="store">Store</button>
+    </div>
+
+    <ul id="result" class="mt-4"></ul>
+
+    <script>
+      const price = document.getElementById("price");
+      const quantity = document.getElementById("quantity");
+      const cal = document.getElementById("cal");
+      const total = document.getElementById("total");
+      const clear = document.getElementById("clear");
+      const store = document.getElementById("store");
+      const result = document.getElementById("result");
+
+      cal.onclick = () => {
+        const res = price.value * quantity.value + " MMK";
+        total.innerText = `${price.value}mmk * ${quantity.value} = ${res} `;
+        price.value = quantity.value = null;
+      };
+
+      clear.onclick = () => {
+        total.innerText = null;
+      };
+
+      store.onclick = () => {
+        result.innerHTML += `<li>${total.innerText}</li>`;
+        total.innerText = null;
+      };
+    </script>
+  </body>
+</html>
